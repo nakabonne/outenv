@@ -1,6 +1,10 @@
 package main
 
-import "github.com/urfave/cli"
+import (
+	"fmt"
+
+	"github.com/urfave/cli"
+)
 
 var Commands = []cli.Command{
 	commandSet,
@@ -19,8 +23,8 @@ var commandSet = cli.Command{
 }
 
 func setSpecificEnv(c *cli.Context) error {
-	argURL := c.Args().Get(0)
-	doUpdate := c.Bool("update")
-	isShallow := c.Bool("shallow")
+	_ = c.Args().Get(0)
+	_ = c.Bool("update")
+	fmt.Println("hey")
 	return nil
 }
