@@ -1,19 +1,23 @@
 package main
 
 import (
-	"os"
+	"github.com/urfave/cli"
 )
 
-// Configured at compile time
-var bashPath string
+const Version string = "0.1.0"
 
 func main() {
 	var env = GetEnv()
-	var args = os.Args
+	newApp().Run(os.Args)
+}
 
-	err := CommandsDispatch(env, args)
-	if err != nil {
-		log_error("error %v", err)
-		os.Exit(1)
-	}
+func newApp() *cli.App {
+	app := cli.NewApp()
+	app.Name = "outenv"
+	app.Usage = "manage the environment without polluting the directory"
+	app.Version = Version
+	app.Author = "nakabonne"
+	app.Email = "rodriguez.nak@gmail.com"
+
+	return app
 }
