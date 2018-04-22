@@ -1,13 +1,15 @@
 package main
 
 import (
+	"os"
+
 	"github.com/urfave/cli"
 )
 
 const Version string = "0.1.0"
 
 func main() {
-	var env = GetEnv()
+	//var env = GetEnv()
 	newApp().Run(os.Args)
 }
 
@@ -18,6 +20,7 @@ func newApp() *cli.App {
 	app.Version = Version
 	app.Author = "nakabonne"
 	app.Email = "rodriguez.nak@gmail.com"
+	app.Commands = Commands
 
 	return app
 }
